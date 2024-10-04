@@ -1,6 +1,4 @@
 import handleProfileSignup from './6-final-user';
 
-console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg").then((res) => {
-    console.log(res);
-    
-}));
+const queue = await handleProfileSignup('John', 'Doe', 'Gerald.jpg');
+console.log(queue);

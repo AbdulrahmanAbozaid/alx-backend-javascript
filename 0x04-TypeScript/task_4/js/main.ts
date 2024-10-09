@@ -2,7 +2,7 @@
 import { Cpp } from './subjects/Cpp';
 import { Java } from './subjects/Java';
 import { React } from './subjects/React';
-import { Subjects } from './subjects/Teacher';
+import { Teacher } from './subjects/Teacher';
 
 // Create and export a constant for each subject
 const cpp = new Cpp();

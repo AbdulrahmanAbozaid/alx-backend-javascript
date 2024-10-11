@@ -1,11 +1,8 @@
-import cleanSet from './8-clean_set.js';
+import updateUniqueItems from "./10-update_uniq_items.js";
+import groceriesList from "./9-groceries_list.js";
 
-console.log(
-  cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), 'bon')
-);
-console.log(
-  cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), '')
-);
+const map = groceriesList();
+console.log(map);
 
-const set = new Set(['id-test', 'id-chicken', 'id-user', , 'id-id-']);
-console.log(cleanSet(set, 'id-'))
+updateUniqueItems(map)
+console.log(map);

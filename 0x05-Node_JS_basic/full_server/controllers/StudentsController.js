@@ -9,7 +9,7 @@ class StudentsController {
         res.write(
           `Number of students in ${field}: ${
             students[field].length
-          }. List: ${students[field].join(', ')}\n`
+          }. List: ${students[field].join(', ')}\n`,
         );
       });
       res.end();

@@ -1,23 +1,24 @@
-import { readDatabase } from '../utils.js';
+const readDatabase = require('../utils');
 
 class StudentsController {
   static async getAllStudents(req, res) {
     try {
       const students = await readDatabase('./database.csv');
-      const responseLines = ['This is the list of our students'];
+      const response = ['This is the list of our students'];
 
       Object.keys(students)
-        .sort()
+        .sort((a, b) => a.localeCompare(b))
         .forEach((field) => {
-          const list = students[field].join(', ');
-          responseLines.push(
-            `Number of students in ${field}: ${students[field].length}. List: ${list}`
+          response.push(
+            `Number of students in ${field}: ${
+              students[field].length
+            }. List: ${students[field].join(', ')}`,
           );
         });
 
-      res.status(200).send(responseLines.join('\n'));
+      res.status(200).send(response.join('\n'));
     } catch (error) {
-      res.status(500).send('Cannot load the database');
+      res.status(500).send(error.message);
     }
   }
 
@@ -31,14 +32,18 @@ class StudentsController {
 
     try {
       const students = await readDatabase('./database.csv');
-      const majorStudents = students[major] || [];
-      const list = majorStudents.join(', ');
+      if (!students[major]) {
+        res.status(404).send('No students found in this major');
+        return;
+      }
 
-      res.status(200).send(`List: ${list}`);
+      res
+        .status(200)
+        .send(`List: ${students[major].join(', ')}`);
     } catch (error) {
-      res.status(500).send('Cannot load the database');
+      res.status(500).send(error.message);
     }
   }
 }
 
-export default StudentsController;
+module.exports = StudentsController;

@@ -5,6 +5,8 @@
     "test": "./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
-    "mocha": "^6.2.2"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "sinon": "^9.2.4"
   }
 }

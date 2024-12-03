@@ -3,7 +3,9 @@ const readDatabase = require('../utils');
 class StudentsController {
   static async getAllStudents(req, res) {
     try {
-      const students = await readDatabase('./database.csv');
+      const path = process.argv.length > 2 ? process.argv[2] : '';
+
+      const students = await readDatabase(path);
       const response = ['This is the list of our students'];
 
       Object.keys(students)

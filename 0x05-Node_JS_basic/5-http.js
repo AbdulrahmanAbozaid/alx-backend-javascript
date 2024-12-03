@@ -13,7 +13,7 @@ const app = http.createServer((req, res) => {
 
     const path = process.argv.length > 2 ? process.argv[2] : 'njn.csv';
 
-    fs.readFile(path, (err, data) => {
+    fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
         res.write('Cannot load the database');
         res.end();

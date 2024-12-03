@@ -11,10 +11,13 @@ const app = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.write('This is the list of our students\n');
 
-    fs.readFile(process.argv[2], 'utf-8', (err, data) => {
+    const path = process.argv.length > 2 ? process.argv[2] : 'njn.csv';
+
+    fs.readFile(path, (err, data) => {
       if (err) {
-        res.write(new Error('Cannot load the database'));
+        res.write('Cannot load the database');
         res.end();
+        return;
       }
 
       const lines = data.split('\n').filter((line) => line.trim() !== '');

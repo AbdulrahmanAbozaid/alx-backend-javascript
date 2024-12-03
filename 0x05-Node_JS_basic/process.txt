@@ -1,0 +1,416 @@
+Statistical profiling result from isolate-0x32be160-30251-v8.log, (294 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     80   27.2%          /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+     29    9.9%          /usr/lib/x86_64-linux-gnu/libc.so.6
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+
+ [C++]:
+   ticks  total  nonlib   name
+     65   22.1%   35.1%  epoll_pwait@@GLIBC_2.6
+     62   21.1%   33.5%  node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+     21    7.1%   11.4%  __write@@GLIBC_2.2.5
+      4    1.4%    2.2%  void node::StreamBase::JSMethod<&node::StreamBase::Writev>(v8::FunctionCallbackInfo<v8::Value> const&)
+      4    1.4%    2.2%  pthread_cond_signal@@GLIBC_2.3.2
+      3    1.0%    1.6%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@@GLIBCXX_3.4.9
+      3    1.0%    1.6%  node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.7%    1.1%  v8::internal::AstValueFactory::GetString(unsigned int, bool, v8::internal::Vector<unsigned char const>)
+      2    0.7%    1.1%  shutdown@@GLIBC_2.2.5
+      2    0.7%    1.1%  epoll_ctl@@GLIBC_2.3.2
+      2    0.7%    1.1%  _IO_file_xsputn@@GLIBC_2.2.5
+      1    0.3%    0.5%  void node::StreamBase::JSMethod<&node::StreamBase::Shutdown>(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.3%    0.5%  v8::internal::Scope::FinalizeBlockScope()
+      1    0.3%    0.5%  v8::internal::DeclarationScope::DeclareParameter(v8::internal::AstRawString const*, v8::internal::VariableMode, bool, bool, v8::internal::AstValueFactory*, int)
+      1    0.3%    0.5%  syscall@@GLIBC_2.2.5
+      1    0.3%    0.5%  operator new(unsigned long)@@GLIBCXX_3.4
+      1    0.3%    0.5%  node::cares_wrap::(anonymous namespace)::GetAddrInfo(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.3%    0.5%  node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.3%    0.5%  node::NonOwningExternalOneByteResource::data() const
+      1    0.3%    0.5%  node::InternalCallbackScope::Close()
+      1    0.3%    0.5%  node::HandleWrap::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.3%    0.5%  node::AsyncWrap::MakeCallback(v8::Local<v8::Function>, int, v8::Local<v8::Value>*)
+      1    0.3%    0.5%  node::(anonymous namespace)::Parser::Proxy<int (node::(anonymous namespace)::Parser::*)(), &node::(anonymous namespace)::Parser::on_headers_complete>::Raw(llhttp__internal_s*)
+      1    0.3%    0.5%  node::(anonymous namespace)::Parser::Finish(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.3%    0.5%  __libc_malloc@@GLIBC_2.2.5
+      1    0.3%    0.5%  _IO_fwrite@@GLIBC_2.2.5
+
+ [Summary]:
+   ticks  total  nonlib   name
+      0    0.0%    0.0%  JavaScript
+    185   62.9%  100.0%  C++
+     28    9.5%   15.1%  GC
+    109   37.1%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     74   77.9%   25.2%  v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*)
+     10   10.5%    3.4%  __write@@GLIBC_2.2.5
+      4    4.2%    1.4%  node::inspector::(anonymous namespace)::InspectorConsoleCall(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    1.1%    0.3%  v8::internal::Scope::FinalizeBlockScope()
+      1    1.1%    0.3%  v8::internal::DeclarationScope::DeclareParameter(v8::internal::AstRawString const*, v8::internal::VariableMode, bool, bool, v8::internal::AstValueFactory*, int)
+      1    1.1%    0.3%  v8::internal::AstValueFactory::GetString(unsigned int, bool, v8::internal::Vector<unsigned char const>)
+      1    1.1%    0.3%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@@GLIBCXX_3.4.9
+      1    1.1%    0.3%  pthread_cond_signal@@GLIBC_2.3.2
+      1    1.1%    0.3%  node::NonOwningExternalOneByteResource::data() const
+      1    1.1%    0.3%  __libc_malloc@@GLIBC_2.2.5
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+     80   27.2%  /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+     44   55.0%    /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      2    4.5%      LazyCompile: ~connectionListenerInternal _http_server.js:362:36
+      2  100.0%        LazyCompile: ~connectionListener _http_server.js:356:28
+      2  100.0%          LazyCompile: ~onconnection net.js:1514:22
+      2    4.5%      Eval: ~<anonymous> internal/timers.js:1:1
+      2  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      2  100.0%            Eval: ~<anonymous> timers.js:1:1
+      2    4.5%      /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      1   50.0%        LazyCompile: ~isIPv6 internal/net.js:29:16
+      1  100.0%          LazyCompile: ~isIP internal/net.js:33:14
+      1  100.0%            LazyCompile: ~lookup dns.js:90:16
+      1   50.0%        Eval: ~<anonymous> internal/child_process.js:1:1
+      1  100.0%          LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1    2.3%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:111:23
+      1  100.0%        LazyCompile: ~Socket._writev net.js:774:36
+      1  100.0%          LazyCompile: ~clearBuffer _stream_writable.js:506:21
+      1  100.0%            LazyCompile: ~Writable.uncork _stream_writable.js:315:37
+      1    2.3%      LazyCompile: ~write_ _http_outgoing.js:592:16
+      1  100.0%        LazyCompile: ~write _http_outgoing.js:585:49
+      1  100.0%          LazyCompile: ~<anonymous> /home/abdo/alx-backend-javascript/0x05-Node_JS_basic/0-main.js:5:22
+      1  100.0%            LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1    2.3%      LazyCompile: ~writeHead _http_server.js:236:19
+      1  100.0%        LazyCompile: ~_implicitHeader _http_server.js:231:68
+      1  100.0%          LazyCompile: ~write_ _http_outgoing.js:592:16
+      1  100.0%            LazyCompile: ~write _http_outgoing.js:585:49
+      1    2.3%      LazyCompile: ~push internal/fixed_queue.js:95:7
+      1  100.0%        LazyCompile: ~nextTick internal/process/task_queues.js:101:18
+      1  100.0%          LazyCompile: ~defaultTriggerAsyncIdScope internal/async_hooks.js:292:36
+      1  100.0%            LazyCompile: ~setupListenHandle net.js:1251:27
+      1    2.3%      LazyCompile: ~processTimers internal/timers.js:460:25
+      1    2.3%      LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    2.3%      LazyCompile: ~onconnection net.js:1514:22
+      1    2.3%      LazyCompile: ~makeNodeErrorWithCode internal/errors.js:190:31
+      1  100.0%        LazyCompile: ~E internal/errors.js:276:11
+      1  100.0%          Eval: ~<anonymous> internal/errors.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    2.3%      LazyCompile: ~lookup dns.js:90:16
+      1  100.0%        LazyCompile: ~lookupAndListen net.js:1478:25
+      1  100.0%          LazyCompile: ~Server.listen net.js:1378:35
+      1  100.0%            Eval: ~<anonymous> /home/abdo/alx-backend-javascript/0x05-Node_JS_basic/0-main.js:1:1
+      1    2.3%      LazyCompile: ~from buffer.js:270:28
+      1  100.0%        Eval: ~<anonymous> _http_outgoing.js:1:1
+      1  100.0%          LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1    2.3%      LazyCompile: ~findLongestRegisteredExtension internal/modules/cjs/loader.js:351:40
+      1  100.0%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:790:33
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1  100.0%            LazyCompile: ~Module.runMain internal/modules/cjs/loader.js:1000:26
+      1    2.3%      LazyCompile: ~emitReadable _stream_readable.js:559:22
+      1  100.0%        LazyCompile: ~onEofChunk _stream_readable.js:529:20
+      1  100.0%          LazyCompile: ~readableAddChunk _stream_readable.js:231:26
+      1  100.0%            LazyCompile: ~Readable.push _stream_readable.js:222:35
+      1    2.3%      LazyCompile: ~emitAfterScript internal/async_hooks.js:359:25
+      1  100.0%        LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:65:35
+      1    2.3%      LazyCompile: ~emit events.js:160:44
+      1  100.0%        LazyCompile: ~emitListeningNT net.js:1329:25
+      1  100.0%          LazyCompile: ~processTicksAndRejections internal/process/task_queues.js:65:35
+      1    2.3%      LazyCompile: ~createWritableStdioStream internal/process/stdio.js:149:35
+      1  100.0%        LazyCompile: ~getStdout internal/process/stdio.js:26:21
+      1  100.0%          LazyCompile: ~get internal/console/constructor.js:148:10
+      1  100.0%            LazyCompile: ~Console.<computed> internal/console/constructor.js:270:47
+      1    2.3%      LazyCompile: ~cache internal/http.js:19:15
+      1  100.0%        LazyCompile: ~nowDate internal/http.js:9:17
+      1  100.0%          LazyCompile: ~connectionListenerInternal _http_server.js:362:36
+      1  100.0%            LazyCompile: ~connectionListener _http_server.js:356:28
+      1    2.3%      LazyCompile: ~addListener events.js:283:58
+      1  100.0%        LazyCompile: ~setupWarningHandler internal/bootstrap/pre_execution.js:106:29
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:9:36
+      1  100.0%            Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1    2.3%      LazyCompile: ~Writable.end _stream_writable.js:581:34
+      1  100.0%        LazyCompile: ~Socket.end net.js:573:32
+      1  100.0%          LazyCompile: ~socketOnEnd _http_server.js:498:21
+      1  100.0%            LazyCompile: ~endReadableNT _stream_readable.js:1176:23
+      1    2.3%      LazyCompile: ~Writable _stream_writable.js:208:18
+      1  100.0%        LazyCompile: ~Duplex _stream_duplex.js:49:16
+      1  100.0%          LazyCompile: ~Socket net.js:252:16
+      1  100.0%            LazyCompile: ~WriteStream tty.js:80:21
+      1    2.3%      LazyCompile: ~TimersList internal/timers.js:221:20
+      1  100.0%        LazyCompile: ~insert internal/timers.js:305:16
+      1  100.0%          LazyCompile: ~unrefActive internal/timers.js:297:21
+      1  100.0%            LazyCompile: ~setUnrefTimeout internal/timers.js:345:25
+      1    2.3%      LazyCompile: ~ServerResponse _http_server.js:147:24
+      1  100.0%        LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1  100.0%          LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    2.3%      LazyCompile: ~Server.listen net.js:1378:35
+      1  100.0%        Eval: ~<anonymous> /home/abdo/alx-backend-javascript/0x05-Node_JS_basic/0-main.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:854:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:954:37
+      1    2.3%      LazyCompile: ~Readable.read _stream_readable.js:399:35
+      1  100.0%        LazyCompile: ~Socket.read net.js:603:33
+      1  100.0%          LazyCompile: ~onconnection net.js:1514:22
+      1    2.3%      LazyCompile: ~Readable _stream_readable.js:154:18
+      1  100.0%        LazyCompile: ~Duplex _stream_duplex.js:49:16
+      1  100.0%          LazyCompile: ~Socket net.js:252:16
+      1  100.0%            LazyCompile: ~WriteStream tty.js:80:21
+      1    2.3%      LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:458:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:725:35
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1  100.0%            LazyCompile: ~Module.runMain internal/modules/cjs/loader.js:1000:26
+      1    2.3%      LazyCompile: ~IncomingMessage _http_incoming.js:39:25
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    2.3%      LazyCompile: ~EventEmitter events.js:43:22
+      1  100.0%        LazyCompile: ~setupProcessObject internal/bootstrap/node.js:319:28
+      1  100.0%          Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%      LazyCompile: ~Console.<computed> internal/console/constructor.js:210:46
+      1  100.0%        LazyCompile: ~log internal/console/constructor.js:281:6
+      1  100.0%          node::inspector::(anonymous namespace)::InspectorConsoleCall(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%            LazyCompile: ~<anonymous> /home/abdo/alx-backend-javascript/0x05-Node_JS_basic/0-main.js:12:34
+      1    2.3%      Eval: ~<anonymous> net.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> _http_agent.js:1:1
+      1    2.3%      Eval: ~<anonymous> internal/util/inspector.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            LazyCompile: ~createGlobalConsole internal/bootstrap/node.js:420:29
+      1    2.3%      Eval: ~<anonymous> internal/streams/buffer_list.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> _stream_readable.js:1:1
+      1    2.3%      Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1    2.3%      Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%      Eval: ~<anonymous> internal/bootstrap/loaders.js:1:1
+      1    2.3%      Eval: ~<anonymous> internal/async_hooks.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%      Eval: ~<anonymous> buffer.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            LazyCompile: ~setupBuffer internal/bootstrap/node.js:403:21
+      1    2.3%      Eval: ~<anonymous> _http_server.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> http.js:1:1
+      3    3.8%    LazyCompile: ~onconnection net.js:1514:22
+      1    1.3%    LazyCompile: ~writevGeneric internal/stream_base_commons.js:111:23
+      1  100.0%      LazyCompile: ~Socket._writev net.js:774:36
+      1  100.0%        LazyCompile: ~clearBuffer _stream_writable.js:506:21
+      1  100.0%          LazyCompile: ~Writable.uncork _stream_writable.js:315:37
+      1  100.0%            LazyCompile: ~connectionCorkNT _http_outgoing.js:654:26
+      1    1.3%    LazyCompile: ~setStreamTimeout internal/stream_base_commons.js:220:26
+      1  100.0%      LazyCompile: ~connectionListenerInternal _http_server.js:362:36
+      1  100.0%        LazyCompile: ~connectionListener _http_server.js:356:28
+      1  100.0%          LazyCompile: ~onconnection net.js:1514:22
+      1    1.3%    LazyCompile: ~removeAt internal/priority_queue.js:88:11
+      1  100.0%      LazyCompile: ~shift internal/priority_queue.js:113:8
+      1  100.0%        LazyCompile: ~listOnTimeout internal/timers.js:480:25
+      1  100.0%          LazyCompile: ~processTimers internal/timers.js:460:25
+      1    1.3%    LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1  100.0%      LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    1.3%    LazyCompile: ~onReadableStreamEnd net.js:613:29
+      1  100.0%      LazyCompile: ~endReadableNT _stream_readable.js:1176:23
+      1    1.3%    LazyCompile: ~normalizeString path.js:52:25
+      1  100.0%      LazyCompile: ~resolve path.js:974:10
+      1  100.0%        LazyCompile: ~patchProcessObject internal/bootstrap/pre_execution.js:57:28
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:9:36
+      1  100.0%            Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1    1.3%    LazyCompile: ~getTimerDuration internal/timers.js:358:26
+      1  100.0%      LazyCompile: ~setStreamTimeout internal/stream_base_commons.js:220:26
+      1  100.0%        LazyCompile: ~connectionListenerInternal _http_server.js:362:36
+      1  100.0%          LazyCompile: ~connectionListener _http_server.js:356:28
+      1  100.0%            LazyCompile: ~onconnection net.js:1514:22
+      1    1.3%    LazyCompile: ~flow _stream_readable.js:996:14
+      1  100.0%      LazyCompile: ~resume_ _stream_readable.js:972:17
+      1    1.3%    LazyCompile: ~dirname path.js:1128:10
+      1  100.0%      LazyCompile: ~Module._compile internal/modules/cjs/loader.js:854:37
+      1  100.0%        LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:954:37
+      1  100.0%          LazyCompile: ~Module.load internal/modules/cjs/loader.js:790:33
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1    1.3%    LazyCompile: ~connectionListenerInternal _http_server.js:362:36
+      1  100.0%      LazyCompile: ~connectionListener _http_server.js:356:28
+      1  100.0%        LazyCompile: ~onconnection net.js:1514:22
+      1    1.3%    LazyCompile: ~clearTimeout timers.js:155:22
+      1  100.0%      LazyCompile: ~Socket._destroy net.js:636:37
+      1  100.0%        LazyCompile: ~destroy internal/streams/destroy.js:4:17
+      1  100.0%          LazyCompile: ~afterShutdown net.js:413:23
+      1    1.3%    LazyCompile: ~clearIncoming _http_server.js:617:23
+      1  100.0%      LazyCompile: ~resOnFinish _http_server.js:630:21
+      1  100.0%        LazyCompile: ~onFinish _http_outgoing.js:685:18
+      1  100.0%          LazyCompile: ~onCorkedFinish _stream_writable.js:684:24
+      1    1.3%    LazyCompile: ~_storeHeader _http_outgoing.js:306:22
+      1  100.0%      LazyCompile: ~writeHead _http_server.js:236:19
+      1  100.0%        LazyCompile: ~_implicitHeader _http_server.js:231:68
+      1  100.0%          LazyCompile: ~write_ _http_outgoing.js:592:16
+      1  100.0%            LazyCompile: ~write _http_outgoing.js:585:49
+      1    1.3%    LazyCompile: ~_send _http_outgoing.js:243:49
+      1  100.0%      LazyCompile: ~write_ _http_outgoing.js:592:16
+      1  100.0%        LazyCompile: ~write _http_outgoing.js:585:49
+      1  100.0%          LazyCompile: ~<anonymous> /home/abdo/alx-backend-javascript/0x05-Node_JS_basic/0-main.js:5:22
+      1  100.0%            LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1    1.3%    LazyCompile: ~_addHeaderLine _http_incoming.js:246:24
+      1  100.0%      LazyCompile: ~_addHeaderLines _http_incoming.js:111:25
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    1.3%    LazyCompile: ~IncomingMessage _http_incoming.js:39:25
+      1  100.0%      LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1    1.3%    Eval: ~<anonymous> internal/util.js:1:1
+      1  100.0%      LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%          Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    1.3%    Eval: ~<anonymous> fs.js:1:1
+      1  100.0%      LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%          Eval: ~<anonymous> internal/source_map.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+
+     65   22.1%  epoll_pwait@@GLIBC_2.6
+
+     62   21.1%  node::native_module::NativeModuleEnv::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+     62  100.0%    v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*)
+     62  100.0%      LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+     62  100.0%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+     10   16.1%          Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      4    6.5%          Eval: ~<anonymous> stream.js:1:1
+      4  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      4    6.5%          Eval: ~<anonymous> http.js:1:1
+      4  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      3    4.8%          LazyCompile: ~setupPrepareStackTrace internal/bootstrap/node.js:300:32
+      3  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      3    4.8%          Eval: ~<anonymous> net.js:1:1
+      3  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      3    4.8%          Eval: ~<anonymous> internal/url.js:1:1
+      3  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          LazyCompile: ~setupBuffer internal/bootstrap/node.js:403:21
+      2  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      2    3.2%          LazyCompile: ~initializeCJSLoader internal/bootstrap/pre_execution.js:377:29
+      2  100.0%            LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:9:36
+      2    3.2%          Eval: ~<anonymous> internal/source_map.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> internal/modules/cjs/loader.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> internal/modules/cjs/helpers.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> internal/cluster/master.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> events.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> child_process.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> buffer.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> _http_client.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      2    3.2%          Eval: ~<anonymous> _http_agent.js:1:1
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          LazyCompile: ~setupProcessObject internal/bootstrap/node.js:319:28
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    1.6%          LazyCompile: ~lookupAndListen net.js:1478:25
+      1  100.0%            LazyCompile: ~Server.listen net.js:1378:35
+      1    1.6%          LazyCompile: ~createWritableStdioStream internal/process/stdio.js:149:35
+      1  100.0%            LazyCompile: ~getStdout internal/process/stdio.js:26:21
+      1    1.6%          Eval: ~<anonymous> tty.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> timers.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> internal/process/task_queues.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1    1.6%          Eval: ~<anonymous> internal/console/global.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> internal/child_process.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> fs.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> dgram.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> cluster.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1    1.6%          Eval: ~<anonymous> _http_common.js:1:1
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+
+     29    9.9%  /usr/lib/x86_64-linux-gnu/libc.so.6
+      1    3.4%    /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      1  100.0%      LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1  100.0%        LazyCompile: ~Module.runMain internal/modules/cjs/loader.js:1000:26
+      1  100.0%          Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+
+     21    7.1%  __write@@GLIBC_2.2.5
+     10   47.6%    /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      1   10.0%      LazyCompile: ~toRealPath internal/modules/cjs/loader.js:331:20
+      1  100.0%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:458:28
+      1  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:725:35
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1   10.0%      LazyCompile: ~setupListenHandle net.js:1251:27
+      1  100.0%        LazyCompile: ~listenInCluster net.js:1336:25
+      1  100.0%          LazyCompile: ~doListen net.js:1480:40
+      1  100.0%            LazyCompile: ~onlookup dns.js:58:18
+      1   10.0%      LazyCompile: ~readFileSync fs.js:350:22
+      1  100.0%        LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:954:37
+      1  100.0%          LazyCompile: ~Module.load internal/modules/cjs/loader.js:790:33
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1   10.0%      LazyCompile: ~initializeCJSLoader internal/bootstrap/pre_execution.js:377:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:9:36
+      1  100.0%          Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1   10.0%      LazyCompile: ~assignSocket _http_server.js:205:62
+      1  100.0%        LazyCompile: ~parserOnIncoming _http_server.js:676:26
+      1  100.0%          LazyCompile: ~parserOnHeadersComplete _http_common.js:70:33
+      1   10.0%      LazyCompile: ~_addListener events.js:221:22
+      1  100.0%        LazyCompile: ~addListener events.js:283:58
+      1  100.0%          LazyCompile: ~setupSignalHandlers internal/bootstrap/pre_execution.js:159:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:9:36
+      1   10.0%      LazyCompile: ~Readable.read _stream_readable.js:399:35
+      1  100.0%        LazyCompile: ~resume_ _stream_readable.js:972:17
+      1   10.0%      LazyCompile: ~Module._load internal/modules/cjs/loader.js:666:24
+      1  100.0%        LazyCompile: ~Module.runMain internal/modules/cjs/loader.js:1000:26
+      1  100.0%          Eval: ~<anonymous> internal/main/run_main_module.js:1:1
+      1   10.0%      LazyCompile: ~Console.<computed> internal/console/constructor.js:251:49
+      1  100.0%        LazyCompile: ~Console.<computed> internal/console/constructor.js:270:47
+      1  100.0%          LazyCompile: ~log internal/console/constructor.js:281:6
+      1  100.0%            node::inspector::(anonymous namespace)::InspectorConsoleCall(v8::FunctionCallbackInfo<v8::Value> const&)
+      1   10.0%      Eval: ~<anonymous> internal/util/types.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> internal/util/inspect.js:1:1
+
+      4    1.4%  void node::StreamBase::JSMethod<&node::StreamBase::Writev>(v8::FunctionCallbackInfo<v8::Value> const&)
+      4  100.0%    v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*)
+      4  100.0%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:111:23
+      4  100.0%        LazyCompile: ~Socket._writev net.js:774:36
+      4  100.0%          LazyCompile: ~clearBuffer _stream_writable.js:506:21
+      4  100.0%            LazyCompile: ~Writable.uncork _stream_writable.js:315:37
+
+      4    1.4%  pthread_cond_signal@@GLIBC_2.3.2
+      1   25.0%    /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      1  100.0%      Eval: ~<anonymous> internal/console/constructor.js:1:1
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%          LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1  100.0%            Eval: ~<anonymous> internal/console/global.js:1:1
+
+      3    1.0%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@@GLIBCXX_3.4.9
+      1   33.3%    /home/abdo/.nvm/versions/node/v12.11.1/bin/node
+      1  100.0%      LazyCompile: ~openSync fs.js:442:18
+      1  100.0%        LazyCompile: ~readFileSync fs.js:350:22
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:954:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:790:33
+
+      3    1.0%  node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      3  100.0%    v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*)
+      3  100.0%      LazyCompile: ~internalBinding internal/bootstrap/loaders.js:128:45
+      1   33.3%        Eval: ~<anonymous> internal/util.js:1:1
+      1  100.0%          LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+      1   33.3%        Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1   33.3%        Eval: ~<anonymous> fs.js:1:1
+      1  100.0%          LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:290:42
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:183:29
+

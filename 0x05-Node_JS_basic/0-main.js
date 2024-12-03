@@ -1,12 +1,9 @@
-const http = require('http');
+const countStudents = require('./3-read_file_async');
 
-const server = http.createServer();
-
-server.on('request', (req, res) => {
-  res.writeHead(200, {'content-type': 'text/plain'})
-  res.end("Done");
-});
-
-server.listen(3000, 'localhost', () => {
-  console.log('Listening');
-});
+countStudents("nope.csv")
+    .then(() => {
+        console.log("Done!");
+    })
+        .catch((error) => {
+        console.log(error);
+    });

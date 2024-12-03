@@ -1,5 +1,5 @@
 const http = require('http');
-const countStudents = require('./3-read_file_async');
+const fs = require('fs');
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
@@ -11,11 +11,34 @@ const app = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.write('This is the list of our students\n');
 
-    countStudents(process.argv[2])
-      .then(() => res.end())
-      .catch((err) => {
-        res.end(err.message);
+    fs.readFile(process.argv[2], 'utf-8', (err, data) => {
+      if (err) {
+        res.write(new Error('Cannot load the database'));
+        res.end();
+      }
+
+      const lines = data.split('\n').filter((line) => line.trim() !== '');
+      const students = lines.slice(1); // Remove the header line
+
+      res.write(`Number of students: ${students.length}\n`);
+
+      const fields = {};
+      students.forEach((student) => {
+        const [firstname, , , field] = student.split(',');
+        if (!fields[field]) fields[field] = [];
+        fields[field].push(firstname);
       });
+
+      for (const [field, names] of Object.entries(fields)) {
+        res.write(
+          `Number of students in ${field}: ${names.length}. List: ${names.join(
+            ', ',
+          )}${field === 'SWE' ? '' : '\n'}`,
+        );
+      }
+
+      res.end();
+    });
   }
 });
 

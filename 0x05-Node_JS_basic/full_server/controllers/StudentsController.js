@@ -25,21 +25,22 @@ class StudentsController {
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
 
-    if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE');
-      return;
-    }
-
     try {
-      const students = await readDatabase('./database.csv');
+      const path = process.argv.length > 2 ? process.argv[2] : '';
+
+      const students = await readDatabase(path);
+
+      if (major !== 'CS' && major !== 'SWE') {
+        res.status(500).send('Major parameter must be CS or SWE');
+        return;
+      }
+
       if (!students[major]) {
         res.status(404).send('No students found in this major');
         return;
       }
 
-      res
-        .status(200)
-        .send(`List: ${students[major].join(', ')}`);
+      res.status(200).send(`List: ${students[major].join(', ')}`);
     } catch (error) {
       res.status(500).send(error.message);
     }
